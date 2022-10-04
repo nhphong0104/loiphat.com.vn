@@ -281,7 +281,7 @@
                                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
 {{--                                                        <h4>{{ __('Submit Your Review') }}</h4>--}}
                                                         @if (!auth('customer')->check())
-                                                            <p class="text-danger">{{ __('Please') }} <a href="{{ route('customer.login') }}">{{ __('login') }}</a> {{ __('to write review!') }}</p>
+                                                            <p class="text-danger">{{ __('Please') }} <a href="{{ route('customer.login') }}"><b>{{ __('login') }}</b></a> {{ __('to write review!') }}</p>
                                                         @endif
                                                         <div class="form-group form-group__rating">
                                                             <label for="review-star">{{ __('Your rating of this product') }}</label>
