@@ -129,6 +129,7 @@
                                     @csrf
                                     {!! apply_filters(ECOMMERCE_PRODUCT_DETAIL_EXTRA_HTML, null) !!}
                                     <div class="ps-product__shopping">
+                                        @if (EcommerceHelper::isCartEnabled())
                                         <figure>
                                             <figcaption>{{ __('Quantity') }}</figcaption>
                                             <div class="form-group--number product__qty">
@@ -138,12 +139,12 @@
                                             </div>
                                         </figure>
                                         <input type="hidden" name="id" class="hidden-product-id" value="{{ ($product->is_variation || !$product->defaultVariation->product_id) ? $product->id : $product->defaultVariation->product_id }}"/>
-
-                                        @if (EcommerceHelper::isCartEnabled())
-                                            <button class="ps-btn ps-btn--black @if ($product->isOutOfStock()) btn-disabled @endif" type="submit" @if ($product->isOutOfStock()) disabled @endif>{{ __('Add to cart') }}</button>
-                                            @if (EcommerceHelper::isQuickBuyButtonEnabled())
-                                                <button class="ps-btn @if ($product->isOutOfStock()) btn-disabled @endif" type="submit" name="checkout" @if ($product->isOutOfStock()) disabled @endif>{{ __('Buy Now') }}</button>
-                                            @endif
+                                        <button class="ps-btn ps-btn--black @if ($product->isOutOfStock()) btn-disabled @endif" type="submit" @if ($product->isOutOfStock()) disabled @endif>{{ __('Add to cart') }}</button>
+                                        @if (EcommerceHelper::isQuickBuyButtonEnabled())
+                                            <button class="ps-btn @if ($product->isOutOfStock()) btn-disabled @endif" type="submit" name="checkout" @if ($product->isOutOfStock()) disabled @endif>{{ __('Buy Now') }}</button>
+                                        @endif
+                                        @else
+                                            <a class="ps-btn" href="tel:0362651111">Liên hệ ngay</a>
                                         @endif
                                         <div class="ps-product__actions">
                                             <a class="js-add-to-wishlist-button" href="#" data-url="{{ route('public.wishlist.add', $product->id) }}"><i class="icon-heart"></i></a>
