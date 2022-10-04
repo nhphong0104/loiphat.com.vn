@@ -88,6 +88,18 @@ if (!function_exists('get_primary_store_locator')) {
     }
 }
 
+if (!function_exists('get_store')) {
+    /**
+     * @return StoreLocator|mixed
+     */
+    function get_store()
+    {
+        $defaultStore = app(StoreLocatorInterface::class)->all();
+
+        return $defaultStore ?? new StoreLocator;
+    }
+}
+
 if (!function_exists('ecommerce_convert_weight')) {
     /**
      * @param int $weight
