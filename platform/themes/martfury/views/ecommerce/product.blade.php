@@ -143,13 +143,14 @@
                                         @if (EcommerceHelper::isQuickBuyButtonEnabled())
                                             <button class="ps-btn @if ($product->isOutOfStock()) btn-disabled @endif" type="submit" name="checkout" @if ($product->isOutOfStock()) disabled @endif>{{ __('Buy Now') }}</button>
                                         @endif
-                                        @else
-                                            <a class="ps-btn" href="tel:0362651111">Liên hệ ngay</a>
-                                        @endif
                                         <div class="ps-product__actions">
                                             <a class="js-add-to-wishlist-button" href="#" data-url="{{ route('public.wishlist.add', $product->id) }}"><i class="icon-heart"></i></a>
                                             <a class="js-add-to-compare-button" href="#" data-url="{{ route('public.compare.add', $product->id) }}" title="{{ __('Compare') }}"><i class="icon-chart-bars"></i></a>
                                         </div>
+                                        @else
+                                            <a class="ps-btn" href="tel:0362651111">Liên hệ ngay</a>
+                                        @endif
+
                                     </div>
                                 </form>
                                 <div class="ps-product__specification">
