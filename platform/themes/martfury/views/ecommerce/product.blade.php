@@ -443,6 +443,10 @@
                 </div>
                 <div class="ps-page__right">
                     <aside class="widget widget_product widget_features">
+                        <?php
+                        dd(get_primary_store_locator());
+                        ?>
+                        @foreach(get_primary_store_locator() as $store)
                         @for ($i = 1; $i <= 5; $i++)
                             @if (theme_option('product_feature_' . $i . '_title'))
                                 <p><i class="{{ theme_option('product_feature_' . $i . '_icon') }}"></i> {{ theme_option('product_feature_' . $i . '_title') }}</p>
