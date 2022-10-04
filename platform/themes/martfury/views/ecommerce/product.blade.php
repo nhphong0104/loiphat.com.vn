@@ -59,7 +59,6 @@
                                     @if (is_plugin_active('marketplace') && $product->store_id)
                                         <p>{{ __('Sold By') }}: <a href="{{ $product->store->url }}"><strong>{{ $product->store->name }}</strong></a></p>
                                     @endif
-
                                     <div class="ps-list--dot">
                                         {!! clean($product->description) !!}
                                     </div>
@@ -182,9 +181,9 @@
                         <div class="ps-product__content ps-tab-root">
                             <ul class="ps-tab-list">
                                 <li class="active"><a href="#tab-description">{{ __('Description') }}</a></li>
-                                @if (EcommerceHelper::isReviewEnabled())
-                                    <li><a href="#tab-reviews">{{ __('Reviews') }} ({{ $product->reviews_count }})</a></li>
-                                @endif
+{{--                                @if (EcommerceHelper::isReviewEnabled())--}}
+{{--                                    <li><a href="#tab-reviews">{{ __('Reviews') }} ({{ $product->reviews_count }})</a></li>--}}
+{{--                                @endif--}}
                                 @if (is_plugin_active('marketplace') && $product->store_id)
                                     <li><a href="#tab-vendor">{{ __('Vendor') }}</a></li>
                                 @endif
@@ -199,114 +198,219 @@
                                             <br />
                                             {!! apply_filters(BASE_FILTER_PUBLIC_COMMENT_AREA, Theme::partial('comments')) !!}
                                         @endif
+                                        @if (EcommerceHelper::isReviewEnabled())
+                                            <div id="tab-reviews">
+                                                <div class="row">
+                                                    <div class="col-lg-5">
+                                                        <div class="ps-block--average-rating">
+                                                            <div class="ps-block__header">
+                                                                <h3>{{ number_format($product->reviews_avg, 2) }}</h3>
+                                                                @if ($product->reviews_count > 0)
+                                                                    <div class="rating_wrap">
+                                                                        <div class="rating">
+                                                                            <div class="product_rate" style="width: {{ $product->reviews_avg * 20 }}%"></div>
+                                                                        </div>
+                                                                        <span class="rating_num">({{ $product->reviews_count }} {{ __('reviews') }})</span>
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                            <div class="ps-block__star"><span>{{ __('5 Star') }}</span>
+                                                                @php
+                                                                    $stars = $product->reviews->where('star', 5)->count();
+                                                                    if ($stars > 0) {
+                                                                        $stars = $stars / $product->reviews_count * 100;
+                                                                    }
+                                                                @endphp
+                                                                <div class="ps-progress" data-value="{{ $stars }}"><span></span></div><span>{{ ((int) ($stars * 100)) / 100 }}%</span>
+                                                            </div>
+                                                            <div class="ps-block__star"><span>{{ __('4 Star') }}</span>
+                                                                @php
+                                                                    $stars = $product->reviews->where('star', 4)->count();
+                                                                    if ($stars > 0) {
+                                                                        $stars = $stars / $product->reviews_count * 100;
+                                                                    }
+                                                                @endphp
+                                                                <div class="ps-progress" data-value="{{ $stars }}"><span></span></div><span>{{ ((int) ($stars * 100)) / 100 }}%</span>
+                                                            </div>
+                                                            <div class="ps-block__star"><span>{{ __('3 Star') }}</span>
+                                                                @php
+                                                                    $stars = $product->reviews->where('star', 3)->count();
+                                                                    if ($stars > 0) {
+                                                                        $stars = $stars / $product->reviews_count * 100;
+                                                                    }
+                                                                @endphp
+                                                                <div class="ps-progress" data-value="{{ $stars }}"><span></span></div><span>{{ ((int) ($stars * 100)) / 100 }}%</span>
+                                                            </div>
+                                                            <div class="ps-block__star"><span>{{ __('2 Star') }}</span>
+                                                                @php
+                                                                    $stars = $product->reviews->where('star', 2)->count();
+                                                                    if ($stars > 0) {
+                                                                        $stars = $stars / $product->reviews_count * 100;
+                                                                    }
+                                                                @endphp
+                                                                <div class="ps-progress" data-value="{{ $stars }}"><span></span></div><span>{{ ((int) ($stars * 100)) / 100 }}%</span>
+                                                            </div>
+                                                            <div class="ps-block__star"><span>{{ __('1 Star') }}</span>
+                                                                @php
+                                                                    $stars = $product->reviews->where('star', 1)->count();
+                                                                    if ($stars > 0) {
+                                                                        $stars = $stars / $product->reviews_count * 100;
+                                                                    }
+                                                                @endphp
+                                                                <div class="ps-progress" data-value="{{ $stars }}"><span></span></div><span>{{ ((int) ($stars * 100)) / 100 }}%</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-7">
+                                                        {!! Form::open(['route' => 'public.reviews.create', 'method' => 'post', 'class' => 'ps-form--review form-review-product']) !!}
+                                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                                        <h4>{{ __('Submit Your Review') }}</h4>
+                                                        @if (!auth('customer')->check())
+                                                            <p class="text-danger">{{ __('Please') }} <a href="{{ route('customer.login') }}">{{ __('login') }}</a> {{ __('to write review!') }}</p>
+                                                        @endif
+                                                        <div class="form-group form-group__rating">
+                                                            <label for="review-star">{{ __('Your rating of this product') }}</label>
+                                                            <select name="star" class="ps-rating" data-read-only="false" id="review-star">
+                                                                <option value="0">0</option>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+                                                                <option value="5">5</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <textarea class="form-control" name="comment" id="txt-comment" rows="6" placeholder="{{ __('Write your review') }}" @if (!auth('customer')->check()) disabled @endif></textarea>
+                                                        </div>
+
+                                                        <div class="form-group submit">
+                                                            <button class="ps-btn @if (!auth('customer')->check()) btn-disabled @endif" type="submit" @if (!auth('customer')->check()) disabled @endif>{{ __('Submit Review') }}</button>
+                                                        </div>
+                                                        {!! Form::close() !!}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="block--product-reviews">
+                                                            <div class="block__header">
+                                                                <h2>{{ $product->reviews_count }} {{ __('reviews for ":product"', ['product' => $product->name]) }}</h2>
+                                                            </div>
+                                                            <div class="block__content" id="app">
+                                                                <product-reviews-component url="{{ route('public.ajax.product-reviews', $product->id) }}"></product-reviews-component>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
-                                @if (EcommerceHelper::isReviewEnabled())
-                                    <div class="ps-tab" id="tab-reviews">
-                                        <div class="row">
-                                            <div class="col-lg-5">
-                                                <div class="ps-block--average-rating">
-                                                    <div class="ps-block__header">
-                                                        <h3>{{ number_format($product->reviews_avg, 2) }}</h3>
-                                                        @if ($product->reviews_count > 0)
-                                                            <div class="rating_wrap">
-                                                                <div class="rating">
-                                                                    <div class="product_rate" style="width: {{ $product->reviews_avg * 20 }}%"></div>
-                                                                </div>
-                                                                <span class="rating_num">({{ $product->reviews_count }} {{ __('reviews') }})</span>
-                                                            </div>
-                                                        @endif
-                                                    </div>
-                                                    <div class="ps-block__star"><span>{{ __('5 Star') }}</span>
-                                                        @php
-                                                            $stars = $product->reviews->where('star', 5)->count();
-                                                            if ($stars > 0) {
-                                                                $stars = $stars / $product->reviews_count * 100;
-                                                            }
-                                                        @endphp
-                                                        <div class="ps-progress" data-value="{{ $stars }}"><span></span></div><span>{{ ((int) ($stars * 100)) / 100 }}%</span>
-                                                    </div>
-                                                    <div class="ps-block__star"><span>{{ __('4 Star') }}</span>
-                                                        @php
-                                                            $stars = $product->reviews->where('star', 4)->count();
-                                                            if ($stars > 0) {
-                                                                $stars = $stars / $product->reviews_count * 100;
-                                                            }
-                                                        @endphp
-                                                        <div class="ps-progress" data-value="{{ $stars }}"><span></span></div><span>{{ ((int) ($stars * 100)) / 100 }}%</span>
-                                                    </div>
-                                                    <div class="ps-block__star"><span>{{ __('3 Star') }}</span>
-                                                        @php
-                                                            $stars = $product->reviews->where('star', 3)->count();
-                                                            if ($stars > 0) {
-                                                                $stars = $stars / $product->reviews_count * 100;
-                                                            }
-                                                        @endphp
-                                                        <div class="ps-progress" data-value="{{ $stars }}"><span></span></div><span>{{ ((int) ($stars * 100)) / 100 }}%</span>
-                                                    </div>
-                                                    <div class="ps-block__star"><span>{{ __('2 Star') }}</span>
-                                                        @php
-                                                            $stars = $product->reviews->where('star', 2)->count();
-                                                            if ($stars > 0) {
-                                                                $stars = $stars / $product->reviews_count * 100;
-                                                            }
-                                                        @endphp
-                                                        <div class="ps-progress" data-value="{{ $stars }}"><span></span></div><span>{{ ((int) ($stars * 100)) / 100 }}%</span>
-                                                    </div>
-                                                    <div class="ps-block__star"><span>{{ __('1 Star') }}</span>
-                                                        @php
-                                                            $stars = $product->reviews->where('star', 1)->count();
-                                                            if ($stars > 0) {
-                                                                $stars = $stars / $product->reviews_count * 100;
-                                                            }
-                                                        @endphp
-                                                        <div class="ps-progress" data-value="{{ $stars }}"><span></span></div><span>{{ ((int) ($stars * 100)) / 100 }}%</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-7">
-                                                {!! Form::open(['route' => 'public.reviews.create', 'method' => 'post', 'class' => 'ps-form--review form-review-product']) !!}
-                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                                    <h4>{{ __('Submit Your Review') }}</h4>
-                                                    @if (!auth('customer')->check())
-                                                        <p class="text-danger">{{ __('Please') }} <a href="{{ route('customer.login') }}">{{ __('login') }}</a> {{ __('to write review!') }}</p>
-                                                    @endif
-                                                    <div class="form-group form-group__rating">
-                                                        <label for="review-star">{{ __('Your rating of this product') }}</label>
-                                                        <select name="star" class="ps-rating" data-read-only="false" id="review-star">
-                                                            <option value="0">0</option>
-                                                            <option value="1">1</option>
-                                                            <option value="2">2</option>
-                                                            <option value="3">3</option>
-                                                            <option value="4">4</option>
-                                                            <option value="5">5</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <textarea class="form-control" name="comment" id="txt-comment" rows="6" placeholder="{{ __('Write your review') }}" @if (!auth('customer')->check()) disabled @endif></textarea>
-                                                    </div>
+{{--                                @if (EcommerceHelper::isReviewEnabled())--}}
+{{--                                    <div class="ps-tab" id="tab-reviews">--}}
+{{--                                        <div class="row">--}}
+{{--                                            <div class="col-lg-5">--}}
+{{--                                                <div class="ps-block--average-rating">--}}
+{{--                                                    <div class="ps-block__header">--}}
+{{--                                                        <h3>{{ number_format($product->reviews_avg, 2) }}</h3>--}}
+{{--                                                        @if ($product->reviews_count > 0)--}}
+{{--                                                            <div class="rating_wrap">--}}
+{{--                                                                <div class="rating">--}}
+{{--                                                                    <div class="product_rate" style="width: {{ $product->reviews_avg * 20 }}%"></div>--}}
+{{--                                                                </div>--}}
+{{--                                                                <span class="rating_num">({{ $product->reviews_count }} {{ __('reviews') }})</span>--}}
+{{--                                                            </div>--}}
+{{--                                                        @endif--}}
+{{--                                                    </div>--}}
+{{--                                                    <div class="ps-block__star"><span>{{ __('5 Star') }}</span>--}}
+{{--                                                        @php--}}
+{{--                                                            $stars = $product->reviews->where('star', 5)->count();--}}
+{{--                                                            if ($stars > 0) {--}}
+{{--                                                                $stars = $stars / $product->reviews_count * 100;--}}
+{{--                                                            }--}}
+{{--                                                        @endphp--}}
+{{--                                                        <div class="ps-progress" data-value="{{ $stars }}"><span></span></div><span>{{ ((int) ($stars * 100)) / 100 }}%</span>--}}
+{{--                                                    </div>--}}
+{{--                                                    <div class="ps-block__star"><span>{{ __('4 Star') }}</span>--}}
+{{--                                                        @php--}}
+{{--                                                            $stars = $product->reviews->where('star', 4)->count();--}}
+{{--                                                            if ($stars > 0) {--}}
+{{--                                                                $stars = $stars / $product->reviews_count * 100;--}}
+{{--                                                            }--}}
+{{--                                                        @endphp--}}
+{{--                                                        <div class="ps-progress" data-value="{{ $stars }}"><span></span></div><span>{{ ((int) ($stars * 100)) / 100 }}%</span>--}}
+{{--                                                    </div>--}}
+{{--                                                    <div class="ps-block__star"><span>{{ __('3 Star') }}</span>--}}
+{{--                                                        @php--}}
+{{--                                                            $stars = $product->reviews->where('star', 3)->count();--}}
+{{--                                                            if ($stars > 0) {--}}
+{{--                                                                $stars = $stars / $product->reviews_count * 100;--}}
+{{--                                                            }--}}
+{{--                                                        @endphp--}}
+{{--                                                        <div class="ps-progress" data-value="{{ $stars }}"><span></span></div><span>{{ ((int) ($stars * 100)) / 100 }}%</span>--}}
+{{--                                                    </div>--}}
+{{--                                                    <div class="ps-block__star"><span>{{ __('2 Star') }}</span>--}}
+{{--                                                        @php--}}
+{{--                                                            $stars = $product->reviews->where('star', 2)->count();--}}
+{{--                                                            if ($stars > 0) {--}}
+{{--                                                                $stars = $stars / $product->reviews_count * 100;--}}
+{{--                                                            }--}}
+{{--                                                        @endphp--}}
+{{--                                                        <div class="ps-progress" data-value="{{ $stars }}"><span></span></div><span>{{ ((int) ($stars * 100)) / 100 }}%</span>--}}
+{{--                                                    </div>--}}
+{{--                                                    <div class="ps-block__star"><span>{{ __('1 Star') }}</span>--}}
+{{--                                                        @php--}}
+{{--                                                            $stars = $product->reviews->where('star', 1)->count();--}}
+{{--                                                            if ($stars > 0) {--}}
+{{--                                                                $stars = $stars / $product->reviews_count * 100;--}}
+{{--                                                            }--}}
+{{--                                                        @endphp--}}
+{{--                                                        <div class="ps-progress" data-value="{{ $stars }}"><span></span></div><span>{{ ((int) ($stars * 100)) / 100 }}%</span>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="col-lg-7">--}}
+{{--                                                {!! Form::open(['route' => 'public.reviews.create', 'method' => 'post', 'class' => 'ps-form--review form-review-product']) !!}--}}
+{{--                                                    <input type="hidden" name="product_id" value="{{ $product->id }}">--}}
+{{--                                                    <h4>{{ __('Submit Your Review') }}</h4>--}}
+{{--                                                    @if (!auth('customer')->check())--}}
+{{--                                                        <p class="text-danger">{{ __('Please') }} <a href="{{ route('customer.login') }}">{{ __('login') }}</a> {{ __('to write review!') }}</p>--}}
+{{--                                                    @endif--}}
+{{--                                                    <div class="form-group form-group__rating">--}}
+{{--                                                        <label for="review-star">{{ __('Your rating of this product') }}</label>--}}
+{{--                                                        <select name="star" class="ps-rating" data-read-only="false" id="review-star">--}}
+{{--                                                            <option value="0">0</option>--}}
+{{--                                                            <option value="1">1</option>--}}
+{{--                                                            <option value="2">2</option>--}}
+{{--                                                            <option value="3">3</option>--}}
+{{--                                                            <option value="4">4</option>--}}
+{{--                                                            <option value="5">5</option>--}}
+{{--                                                        </select>--}}
+{{--                                                    </div>--}}
+{{--                                                    <div class="form-group">--}}
+{{--                                                        <textarea class="form-control" name="comment" id="txt-comment" rows="6" placeholder="{{ __('Write your review') }}" @if (!auth('customer')->check()) disabled @endif></textarea>--}}
+{{--                                                    </div>--}}
 
-                                                    <div class="form-group submit">
-                                                        <button class="ps-btn @if (!auth('customer')->check()) btn-disabled @endif" type="submit" @if (!auth('customer')->check()) disabled @endif>{{ __('Submit Review') }}</button>
-                                                    </div>
-                                                {!! Form::close() !!}
-                                            </div>
-                                        </div>
+{{--                                                    <div class="form-group submit">--}}
+{{--                                                        <button class="ps-btn @if (!auth('customer')->check()) btn-disabled @endif" type="submit" @if (!auth('customer')->check()) disabled @endif>{{ __('Submit Review') }}</button>--}}
+{{--                                                    </div>--}}
+{{--                                                {!! Form::close() !!}--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
 
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="block--product-reviews">
-                                                    <div class="block__header">
-                                                        <h2>{{ $product->reviews_count }} {{ __('reviews for ":product"', ['product' => $product->name]) }}</h2>
-                                                    </div>
-                                                    <div class="block__content" id="app">
-                                                        <product-reviews-component url="{{ route('public.ajax.product-reviews', $product->id) }}"></product-reviews-component>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
+{{--                                        <div class="row">--}}
+{{--                                            <div class="col-12">--}}
+{{--                                                <div class="block--product-reviews">--}}
+{{--                                                    <div class="block__header">--}}
+{{--                                                        <h2>{{ $product->reviews_count }} {{ __('reviews for ":product"', ['product' => $product->name]) }}</h2>--}}
+{{--                                                    </div>--}}
+{{--                                                    <div class="block__content" id="app">--}}
+{{--                                                        <product-reviews-component url="{{ route('public.ajax.product-reviews', $product->id) }}"></product-reviews-component>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                @endif--}}
 
                                 @if (is_plugin_active('marketplace') && $product->store_id)
                                     <div class="ps-tab" id="tab-vendor">
