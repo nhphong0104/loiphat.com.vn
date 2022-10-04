@@ -3,7 +3,6 @@
     {!! Form::open(['route' => ['settings.edit']]) !!}
         <div class="max-width-1200">
             <div class="flexbox-annotated-section">
-
                 <div class="flexbox-annotated-section-annotation">
                     <div class="annotated-section-title pd-all-20">
                         <h2>{{ trans('core/setting::setting.general.general_block') }}</h2>
