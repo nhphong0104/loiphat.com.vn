@@ -279,7 +279,7 @@
                                                     <div class="col-lg-7">
                                                         {!! Form::open(['route' => 'public.reviews.create', 'method' => 'post', 'class' => 'ps-form--review form-review-product']) !!}
                                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                                        <h4>{{ __('Submit Your Review') }}</h4>
+{{--                                                        <h4>{{ __('Submit Your Review') }}</h4>--}}
                                                         @if (!auth('customer')->check())
                                                             <p class="text-danger">{{ __('Please') }} <a href="{{ route('customer.login') }}">{{ __('login') }}</a> {{ __('to write review!') }}</p>
                                                         @endif
