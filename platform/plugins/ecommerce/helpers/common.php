@@ -94,9 +94,9 @@ if (!function_exists('get_store')) {
      */
     function get_store()
     {
-        $defaultStore = app(StoreLocatorInterface::class)->all();
+        $storeLocators = app(StoreLocatorInterface::class)->all();
 
-        return $defaultStore ?? new StoreLocator;
+        return $storeLocators;
     }
 }
 
