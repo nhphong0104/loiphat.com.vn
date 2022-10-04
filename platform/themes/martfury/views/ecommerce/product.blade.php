@@ -444,7 +444,7 @@
                 <div class="ps-page__right">
                     <aside class="widget widget_product widget_features">
                         <?php
-                        dd(get_primary_store_locator());
+                        dd(get_store());
                         ?>
                         @for ($i = 1; $i <= 5; $i++)
                             @if (theme_option('product_feature_' . $i . '_title'))
