@@ -201,7 +201,7 @@
                                         @if (EcommerceHelper::isReviewEnabled())
                                             <hr>
                                             <div id="tab-reviews">
-                                                <h3>{ __('Reviews') }}</h3>
+                                                <h3>{{ __('Reviews') }}</h3>
                                                 <div class="row">
                                                     <div class="col-lg-5">
                                                         <div class="ps-block--average-rating">
