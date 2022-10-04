@@ -51,6 +51,15 @@
                                                     <span class="rating_num">({{ $product->reviews_count }} {{ __('reviews') }})</span>
                                                 </a>
                                             </div>
+                                        @else
+                                                <div class="rating_wrap">
+                                                    <a href="#tab-reviews">
+                                                        <div class="rating">
+                                                            <div class="product_rate" style="width: 0%"></div>
+                                                        </div>
+                                                        <span class="rating_num">(0 {{ __('reviews') }})</span>
+                                                    </a>
+                                                </div>
                                         @endif
                                     @endif
                                 </div>
