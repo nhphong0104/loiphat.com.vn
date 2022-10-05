@@ -2,7 +2,6 @@
         <div class="ps-container">
             <div class="ps-footer__widgets">
                 <aside class="widget widget_footer widget_contact-us">
-                    <h4 class="widget-title">{{ __('Contact us') }}</h4>
                     <div class="widget_content">
                         @if (theme_option('hotline'))
                             <p>{{ __('Call us 24/7') }}</p>
@@ -23,7 +22,30 @@
                         </ul>
                     </div>
                 </aside>
-                {!! dynamic_sidebar('footer_sidebar') !!}
+                @foreach(get_store() as $store)
+                    <aside class="widget widget_footer widget_contact-us">
+                        <div class="widget_content">
+                            @if (theme_option('hotline'))
+                                <p>{{ __('Call us 24/7') }}</p>
+                                <h3>{{$store->phone}}</h3>
+                            @endif
+                            <p>{{$store->address}} <br><a href="mailto:{{$store->email}}">{{$store->email}}</a></p>
+                            <ul class="ps-list--social">
+                                @for($i = 1; $i <= 10; $i++)
+                                    @if(theme_option('social-name-' . $i) && theme_option('social-url-' . $i) && theme_option('social-icon-' . $i))
+                                        <li>
+                                            <a href="{{ theme_option('social-url-' . $i) }}"
+                                               title="{{ theme_option('social-name-' . $i) }}" style="color: {{ theme_option('social-color-' . $i) }}">
+                                                <i class="fa {{ theme_option('social-icon-' . $i) }}"></i>
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endfor
+                            </ul>
+                        </div>
+                    </aside>
+                @endforeach
+{{--                {!! dynamic_sidebar('footer_sidebar') !!}--}}
             </div>
             @if (Widget::group('bottom_footer_sidebar')->getWidgets())
                 <div class="ps-footer__links" id="footer-links">
