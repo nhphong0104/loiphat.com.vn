@@ -22,7 +22,7 @@
                          data-owl-gap="0"
                          data-owl-nav="true"
                          data-owl-dots="true"
-                         data-owl-item="5"
+                         data-owl-item="6"
                          data-owl-item-xs="2"
                          data-owl-item-sm="2"
                          data-owl-item-md="3"
