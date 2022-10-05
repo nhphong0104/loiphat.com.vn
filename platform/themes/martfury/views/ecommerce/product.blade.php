@@ -443,8 +443,9 @@
                 </div>
                 <div class="ps-page__right">
                     <aside class="widget widget_product widget_features">
+                        <h3>Liên hệ</h3>
                         @foreach(get_store() as $store)
-                            <p><i class="icon-location"></i> <b>{{$store->name}}</b> - <a href="tel:{{$store->phone}}">{{$store->phone}}</a></p>
+                            <p><i class="icon-network"></i> <b>{{$store->name}}</b><br> <a href="tel:{{$store->phone}}">{{$store->phone}}</a></p>
                         @endforeach
 {{--                        @for ($i = 1; $i <= 5; $i++)--}}
 {{--                            @if (theme_option('product_feature_' . $i . '_title'))--}}
