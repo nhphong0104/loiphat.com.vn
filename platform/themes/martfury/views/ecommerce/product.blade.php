@@ -443,11 +443,14 @@
                 </div>
                 <div class="ps-page__right">
                     <aside class="widget widget_product widget_features">
-                        @for ($i = 1; $i <= 5; $i++)
-                            @if (theme_option('product_feature_' . $i . '_title'))
-                                <p><i class="{{ theme_option('product_feature_' . $i . '_icon') }}"></i> {{ theme_option('product_feature_' . $i . '_title') }}</p>
-                            @endif
-                        @endfor
+                        @foreach(get_store() as $store)
+                            <p><i class="icon-location"></i> <b>{{$store->name}}</b> - <a href="tel:{{$store->phone}}">{{$store->phone}}</a></p>
+                        @endforeach
+{{--                        @for ($i = 1; $i <= 5; $i++)--}}
+{{--                            @if (theme_option('product_feature_' . $i . '_title'))--}}
+{{--                                <p><i class="{{ theme_option('product_feature_' . $i . '_icon') }}"></i> {{ theme_option('product_feature_' . $i . '_title') }}</p>--}}
+{{--                            @endif--}}
+{{--                        @endfor--}}
                     </aside>
                     @if (is_plugin_active('ads'))
                         <aside class="widget">
