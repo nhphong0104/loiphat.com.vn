@@ -45,22 +45,27 @@ if (is_plugin_active('ecommerce')) {
 
     add_action(BASE_ACTION_AFTER_CREATE_CONTENT, function ($type, $request, $object) {
         if (get_class($object) == ProductCategory::class) {
-            MetaBox::saveMetaBoxData($object, 'icon', $request->input('icon'));
-        }
+            if ($request->has('icon')) {
+                MetaBox::saveMetaBoxData($object, 'icon', $request->input('icon'));
+            }
 
-        if ($request->has('icon_image')) {
-            MetaBox::saveMetaBoxData($object, 'icon_image', $request->input('icon_image'));
+            if ($request->has('icon_image')) {
+                MetaBox::saveMetaBoxData($object, 'icon_image', $request->input('icon_image'));
+            }
         }
     }, 230, 3);
 
     add_action(BASE_ACTION_AFTER_UPDATE_CONTENT, function ($type, $request, $object) {
         if (get_class($object) == ProductCategory::class) {
-            MetaBox::saveMetaBoxData($object, 'icon', $request->input('icon'));
+            if ($request->has('icon')) {
+                MetaBox::saveMetaBoxData($object, 'icon', $request->input('icon'));
+            }
+
+            if ($request->has('icon_image')) {
+                MetaBox::saveMetaBoxData($object, 'icon_image', $request->input('icon_image'));
+            }
         }
 
-        if ($request->has('icon_image')) {
-            MetaBox::saveMetaBoxData($object, 'icon_image', $request->input('icon_image'));
-        }
     }, 231, 3);
 
     app()->booted(function () {
