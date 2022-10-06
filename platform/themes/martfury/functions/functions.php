@@ -31,6 +31,7 @@ if (is_plugin_active('ecommerce')) {
         if (get_class($object) == ProductCategory::class && $context == 'advanced') {
             MetaBox::addMetaBox('additional_product_category_fields', __('Addition Information'), function () {
                 $icon = null;
+                $iconImage = null;
                 $args = func_get_args();
                 if (!empty($args[0])) {
                     $icon = MetaBox::getMetaData($args[0], 'icon', true);
