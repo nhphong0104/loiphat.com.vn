@@ -34,9 +34,10 @@ if (is_plugin_active('ecommerce')) {
                 $args = func_get_args();
                 if (!empty($args[0])) {
                     $icon = MetaBox::getMetaData($args[0], 'icon', true);
+                    $iconImage = MetaBox::getMetaData($args[0], 'icon_image', true);
                 }
 
-                return Theme::partial('product-category-fields', compact('icon'));
+                return Theme::partial('product-category-fields', compact('icon','iconImage'));
             }, get_class($object), $context);
         }
     }, 24, 2);
@@ -45,11 +46,19 @@ if (is_plugin_active('ecommerce')) {
         if (get_class($object) == ProductCategory::class) {
             MetaBox::saveMetaBoxData($object, 'icon', $request->input('icon'));
         }
+
+        if ($request->has('icon_image')) {
+            MetaBox::saveMetaBoxData($object, 'icon_image', $request->input('icon_image'));
+        }
     }, 230, 3);
 
     add_action(BASE_ACTION_AFTER_UPDATE_CONTENT, function ($type, $request, $object) {
         if (get_class($object) == ProductCategory::class) {
             MetaBox::saveMetaBoxData($object, 'icon', $request->input('icon'));
+        }
+
+        if ($request->has('icon_image')) {
+            MetaBox::saveMetaBoxData($object, 'icon_image', $request->input('icon_image'));
         }
     }, 231, 3);
 
