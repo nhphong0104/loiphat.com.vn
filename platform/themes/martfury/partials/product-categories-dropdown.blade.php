@@ -1,6 +1,15 @@
 @foreach ($categories as $category)
     <li @if ($category->children->count()) class="menu-item-has-children has-mega-menu" @endif>
-        <a href="{{ $category->url }}">@if (count($category->icon->meta_value) > 0) <i class="{{ $category->icon->meta_value[0] }}"></i> @endif {{ $category->name }}</a>
+
+        <a href="{{ $category->url }}">
+            @if ($category->getMetaData('icon_image', true))
+                <img src="{{ RvMedia::getImageUrl($category->getMetaData('icon_image', true)) }}" alt="{{ $category->name }}" width="22" height="22">
+            @elseif ($category->getMetaData('icon', true))
+                <i class="{{ $category->getMetaData('icon', true) }}"></i>
+            @endif
+            @if (count($category->icon->meta_value) > 0) <i class="{{ $category->icon->meta_value[0] }}"></i> @endif
+                {{ $category->name }}
+        </a>
         @if ($category->children->count())
             <span class="sub-toggle"></span>
             <div class="mega-menu">
