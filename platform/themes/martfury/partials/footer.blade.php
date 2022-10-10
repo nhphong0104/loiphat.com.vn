@@ -73,28 +73,9 @@
         </div>
     </div>
 </footer>
-<div class="vka-wrapper">
-    <input id="vkaCheckbox" type="checkbox" class="vka-checkbox">
-    <label class="vka" for="vkaCheckbox">
-        <i class="icon-cps-vka-menu"></i>
-    </label>
-    <div class="vka-wheel">
-        <a class="vka-action vka-action-1" href="https://goo.gl/maps/9YhaRv38hb3awRmj8" rel="nofollow" target="_blank"
-           title="Tìm cửa hàng">
-            <div class="vka-button vka-button-1"><i class="icon-cps-local"></i></div>
-        </a>
-        <a class="vka-action vka-action-2" href="tel:0986313886" rel="nofollow" title="Gọi trực tiếp">
-            <div class="vka-button vka-button-2"><i class="icon-cps-phone"></i></div>
-        </a>
-        <a class="vka-action vka-action-3" href="https://m.me/107569808662644" rel="nofollow" target="_blank"
-           title="Chat Facebook">
-            <div class="vka-button vka-button-3"><i class="icon-cps-facebook"></i></div>
-        </a>
-        <a class="vka-action vka-action-4" href="https://zalo.me/0362651111" target="_blank" rel="nofollow"
-           title="Chat Zalo">
-            <div class="vka-button vka-button-4"><i class="icon-cps-chat-zalo"></i></div>
-        </a>
-    </div>
+
+<div id="contact1">
+
 </div>
 
 @if (is_plugin_active('newsletter') && theme_option('enable_newsletter_popup', 'yes') === 'yes')
