@@ -204,7 +204,7 @@
     #contact1 {
         position: fixed;
         right: 25px;
-        bottom: 25px;
+        bottom: 80px;
         width: 180px;
         flex: unset;
         align-self: center;
