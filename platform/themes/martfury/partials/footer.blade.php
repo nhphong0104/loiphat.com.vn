@@ -213,7 +213,7 @@
     .item-contact {
         border-style: solid;
         border-width: 1px;
-        border-color: #86868b;
+        border-color: #d9d9d9;
         box-shadow: 6px 2px 5px 0 rgb(0 0 0 / 10%);
         transition: background .3s, border .3s, border-radius .3s, box-shadow .3s;
         margin: 0 0 16px;
