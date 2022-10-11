@@ -22,6 +22,7 @@
                     </div>
                     @php
                         $categories = $form->getFormOption('categories');
+dd($categories);
                     @endphp
                     <div class="file-tree-wrapper" data-url="{{ route('product-categories.index') }}">
                         @include('plugins/ecommerce::product-categories.partials.categories-tree')
