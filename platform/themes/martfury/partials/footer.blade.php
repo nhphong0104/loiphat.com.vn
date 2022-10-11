@@ -193,6 +193,41 @@
         -ms-flex-line-pack: start;
         align-content: flex-start;
     }
+    .elementor-icon-box-wrapper {
+        text-align: left;
+        display: flex;
+    }
+    .elementor-icon-box-icon {
+        margin-right: var(--icon-box-icon-margin,15px);
+        margin-left: 0;
+        margin-bottom: unset;
+        flex: 0 0 auto;
+    }
+    .elementor-icon {
+        font-size: 40px;
+    }
+    .elementor-icon i, .elementor-icon svg {
+        width: 1em;
+        height: 1em;
+        position: relative;
+        display: block;
+    }
+    .elementor-icon-box-content {
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+    }
+    .elementor-icon-box-title, .elementor-icon-box-title a{
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 18px;
+        color: #1d1d1f;
+    }
+    .elementor-icon-box-description {
+        color: #86868b;
+        font-size: 11px;
+        line-height: 16px;
+    }
 </style>
 
 <script>
