@@ -266,6 +266,7 @@
         color: #86868b;
         font-size: 11px;
         line-height: 16px;
+        margin-bottom: 0px;
     }
 </style>
 
