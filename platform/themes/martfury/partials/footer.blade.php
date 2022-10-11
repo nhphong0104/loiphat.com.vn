@@ -174,14 +174,15 @@
 
     .item-contact {
         border-style: solid;
-        border-width: 0;
-        border-color: #f2f2f2;
-        box-shadow: 0 2px 5px 0 rgb(0 0 0 / 10%);
+        border-width: 1px;
+        border-color: #86868b;
+        box-shadow: 6px 2px 5px 0 rgb(0 0 0 / 10%);
         transition: background .3s, border .3s, border-radius .3s, box-shadow .3s;
         margin: 0 0 16px;
         --e-column-margin-right: 0px;
         --e-column-margin-left: 0px;
         border-radius: 12px;
+        background: #fff;
     }
 
     .item-contact-wrap {
