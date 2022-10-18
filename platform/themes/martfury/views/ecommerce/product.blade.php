@@ -525,6 +525,7 @@
                     {!! AdsManager::display('product-sidebar') !!}
                 </aside>
             @endif
+            {!! dynamic_sidebar('product_sidebar') !!}
         </div>
     </div>
     @php
