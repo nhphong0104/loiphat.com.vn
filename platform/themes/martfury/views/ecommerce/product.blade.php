@@ -509,7 +509,7 @@
                 {{--                            @endif--}}
                 {{--                        @endfor--}}
             </aside>
-            <aside class="widget">
+            <aside class="widget ps-product__desc">
                 <div class="ps-list--dot">
                     <ul>
                         <li>Bảo Hành 1 năm, lỗi 1 đổi 1 trong vòng 5 ngày</li>
