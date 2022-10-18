@@ -509,15 +509,17 @@
                 {{--                            @endif--}}
                 {{--                        @endfor--}}
             </aside>
-            <div class="ps-list--dot">
-                <ul>
-                    <li>Bảo Hành 1 năm, lỗi 1 đổi 1 trong vòng 5 ngày</li>
-                    <li>Giao hàng toàn quốc</li>
-                    <li>Mức giá cạnh tranh nhất!</li>
-                    <li>Sản xuất trên dây truyền hiện đại</li>
-                    <li>Nhận thiết kế theo yêu cầu của khách hàng</li>
-                </ul>
-            </div>
+            <aside class="widget">
+                <div class="ps-list--dot">
+                    <ul>
+                        <li>Bảo Hành 1 năm, lỗi 1 đổi 1 trong vòng 5 ngày</li>
+                        <li>Giao hàng toàn quốc</li>
+                        <li>Mức giá cạnh tranh nhất!</li>
+                        <li>Sản xuất trên dây truyền hiện đại</li>
+                        <li>Nhận thiết kế theo yêu cầu của khách hàng</li>
+                    </ul>
+                </div>
+            </aside>
             @if (is_plugin_active('ads'))
                 <aside class="widget">
                     {!! AdsManager::display('product-sidebar') !!}
