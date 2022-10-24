@@ -62,7 +62,7 @@ return [
                 ->add('nouislider-js', 'plugins/nouislider/nouislider.min.js', ['jquery']);
             $theme->asset()->container('footer')->usePath()->add('popper-js', 'plugins/popper.min.js', ['jquery']);
             $theme->asset()->container('footer')->usePath()
-                ->add('owl-carousel-js', 'plugins/owl-carousel/owl.carousel.min.js', ['jquery']);
+                ->add('owl-carousel-js', '//cdn.botble.com/themes/martfury/plugins/owl-carousel/owl.carousel.min.js', ['jquery']);
             $theme->asset()->container('footer')->usePath()
                 ->add('bootstrap-js', 'plugins/bootstrap/js/bootstrap.min.js', ['jquery']);
             $theme->asset()->container('footer')->usePath()
