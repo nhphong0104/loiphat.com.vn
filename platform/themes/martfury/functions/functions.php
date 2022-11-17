@@ -27,6 +27,7 @@ register_sidebar([
     'name'        => __('Product sidebar'),
     'description' => __('Widgets in product of page'),
 ]);
+
 RvMedia::setUploadPathAndURLToPublic();
 
 RvMedia::addSize('medium', 790, 510)->addSize('small', 300, 300);
