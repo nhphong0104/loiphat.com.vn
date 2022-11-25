@@ -371,6 +371,10 @@
             @endif
         });
 
+
+
+    </script>
+    <script type="text/javascript">
         var flag = false;
         function toggleMenu() {
             let menuIcon = document.getElementById('Rbtn-menu-icon');
