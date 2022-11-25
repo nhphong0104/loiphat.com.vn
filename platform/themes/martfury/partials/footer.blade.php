@@ -370,6 +370,34 @@
             @endforeach
             @endif
         });
+
+        var flag = false;
+        function toggleMenu() {
+            let menuIcon = document.getElementById('Rbtn-menu-icon');
+            let closeIcon = document.getElementById('Ricon-close');
+            let dfText = document.getElementById('Rbtn-df-text');
+            let groupText = document.getElementById('Rbtn-group-content');
+            let showList = document.getElementById('Rbtn-list');
+            let screenbg = document.getElementById('screen-bg');
+            if (flag===false)
+            {
+                closeIcon.style.display = 'block';
+                menuIcon.style.display = 'none';
+                dfText.style.display = 'none';
+                groupText.style.display = 'block';
+                showList.style.display = 'block';
+                flag = true;
+            }
+            else {
+                closeIcon.style.display = 'none';
+                menuIcon.style.display = 'block';
+                dfText.style.display = 'block';
+                groupText.style.display = 'none';
+                showList.style.display = 'none';
+                flag = false;
+            }
+        }
+
     </script>
     @endif
     </body>
