@@ -127,7 +127,7 @@
         </div>
     </div>
 </div>
-<div id="contact1" class="d-sm-none">
+<div id="contact1" class="d-sm-none d-block">
     <div class="item-contact">
         <div class="item-contact-wrap">
             <div class="elementor-icon-box-wrapper">
@@ -388,7 +388,6 @@
             flag = false;
         }
     }
-
 </script>
     </body>
-    </html>
+</html>
