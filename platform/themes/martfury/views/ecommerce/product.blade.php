@@ -34,6 +34,39 @@
                                 </div>
                             @endforeach
                         </div>
+                        <div class="ps-product__specification">
+                            @if ($product->sku)
+                                <p><strong>{{ __('SKU') }}:</strong> <span id="product-sku">{{ $product->sku }}</span>
+                                </p>
+                            @endif
+                            @if ($product->categories->count())
+                                <p class="categories"><strong> {{ __('Categories') }}:</strong>
+                                    @foreach($product->categories as $category)
+                                        <a href="{{ $category->url }}">{{ $category->name }}</a>@if (!$loop->last)
+                                            ,@endif
+                                    @endforeach
+                                </p>
+                            @endif
+
+                            @if ($product->tags->count())
+                                <p class="tags"><strong> {{ __('Tags') }}:</strong>
+                                    @foreach($product->tags as $tag)
+                                        <a href="{{ $tag->url }}">{{ $tag->name }}</a>@if (!$loop->last),@endif
+                                    @endforeach
+                                </p>
+                            @endif
+                        </div>
+                        <div class="ps-product__sharing">
+                            <a class="facebook"
+                               href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($product->url) }}"
+                               target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a class="linkedin"
+                               href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode($product->url) }}&summary={{ rawurldecode(strip_tags($product->description)) }}"
+                               target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a class="twitter"
+                               href="https://twitter.com/intent/tweet?url={{ urlencode($product->url) }}&text={{ strip_tags($product->description) }}"
+                               target="_blank"><i class="fa fa-twitter"></i></a>
+                        </div>
                     </div>
                     <div class="ps-product__info">
                         <h1>{{ $product->name }}</h1>
@@ -188,39 +221,7 @@
 
                             </div>
                         </form>
-                        <div class="ps-product__specification">
-                            @if ($product->sku)
-                                <p><strong>{{ __('SKU') }}:</strong> <span id="product-sku">{{ $product->sku }}</span>
-                                </p>
-                            @endif
-                            @if ($product->categories->count())
-                                <p class="categories"><strong> {{ __('Categories') }}:</strong>
-                                    @foreach($product->categories as $category)
-                                        <a href="{{ $category->url }}">{{ $category->name }}</a>@if (!$loop->last)
-                                            ,@endif
-                                    @endforeach
-                                </p>
-                            @endif
 
-                            @if ($product->tags->count())
-                                <p class="tags"><strong> {{ __('Tags') }}:</strong>
-                                    @foreach($product->tags as $tag)
-                                        <a href="{{ $tag->url }}">{{ $tag->name }}</a>@if (!$loop->last),@endif
-                                    @endforeach
-                                </p>
-                            @endif
-                        </div>
-                        <div class="ps-product__sharing">
-                            <a class="facebook"
-                               href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($product->url) }}"
-                               target="_blank"><i class="fa fa-facebook"></i></a>
-                            <a class="linkedin"
-                               href="https://www.linkedin.com/shareArticle?mini=true&url={{ urlencode($product->url) }}&summary={{ rawurldecode(strip_tags($product->description)) }}"
-                               target="_blank"><i class="fa fa-linkedin"></i></a>
-                            <a class="twitter"
-                               href="https://twitter.com/intent/tweet?url={{ urlencode($product->url) }}&text={{ strip_tags($product->description) }}"
-                               target="_blank"><i class="fa fa-twitter"></i></a>
-                        </div>
                     </div>
                 </div>
                 <div class="ps-product__content ps-tab-root">
