@@ -16,16 +16,23 @@
             <input type="text" class="next-input" name="email" placeholder="{{ trans('plugins/ecommerce::store-locator.email') }}" value="{{ $locator ? $locator->email : null }}">
         </div>
     </div>
+
     <div class="next-form-grid">
         <div class="next-form-grid-cell">
-            <label class="text-title-field">{{ trans('plugins/ecommerce::store-locator.address') }}</label>
-            <input type="text" class="next-input" name="address" placeholder="{{ trans('plugins/ecommerce::store-locator.address') }}" value="{{ $locator ? $locator->address : null}}">
+            <label class="text-title-field">{{ trans('plugins/ecommerce::store-locator.google_map') }}</label>
+            <input type="text" class="next-input" name="google_map" placeholder="{{ trans('plugins/ecommerce::store-locator.google_map') }}" value="{{ $locator ? $locator->google_map : null}}">
         </div>
     </div>
     <div class="next-form-grid">
         <div class="next-form-grid-cell">
             <label class="text-title-field">{{ trans('plugins/ecommerce::store-locator.working_time') }}</label>
             <input type="text" class="next-input" name="working_time" placeholder="{{ trans('plugins/ecommerce::store-locator.working_time') }}" value="{{ $locator ? $locator->working_time : null}}">
+        </div>
+    </div>
+    <div class="next-form-grid">
+        <div class="next-form-grid-cell">
+            <label class="text-title-field">{{ trans('plugins/ecommerce::store-locator.address') }}</label>
+            <input type="text" class="next-input" name="address" placeholder="{{ trans('plugins/ecommerce::store-locator.address') }}" value="{{ $locator ? $locator->address : null}}">
         </div>
     </div>
     <div class="next-form-grid">

@@ -16,6 +16,7 @@ class AddWorkingTimeToEcStoreLocators extends Migration
         Schema::table('ec_store_locators', function (Blueprint $table) {
             //
             $table->string('working_time',255)->nullable();
+            $table->string('google_map',255)->nullable();
         });
     }
 
@@ -28,7 +29,8 @@ class AddWorkingTimeToEcStoreLocators extends Migration
     {
         Schema::table('ec_store_locators', function (Blueprint $table) {
             //
-            $table->dropColume('working_time');
+            $table->dropColumn('working_time');
+            $table->dropColumn('google_map');
         });
     }
 }
