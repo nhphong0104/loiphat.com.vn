@@ -24,6 +24,12 @@
     </div>
     <div class="next-form-grid">
         <div class="next-form-grid-cell">
+            <label class="text-title-field">{{ trans('plugins/ecommerce::store-locator.working_time') }}</label>
+            <input type="text" class="next-input" name="working_time" placeholder="{{ trans('plugins/ecommerce::store-locator.working_time') }}" value="{{ $locator ? $locator->working_time : null}}">
+        </div>
+    </div>
+    <div class="next-form-grid">
+        <div class="next-form-grid-cell">
             <label class="text-title-field" for="store_state">{{ trans('plugins/ecommerce::store-locator.state') }}</label>
             <input type="text" class="next-input" name="state" id="store_state" value="{{ get_ecommerce_setting('store_state') }}">
         </div>

@@ -24,6 +24,7 @@ class StoreLocator extends BaseModel
         'country',
         'state',
         'city',
+        'working_time',
         'is_primary',
         'is_shipping_location',
     ];

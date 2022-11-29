@@ -15,4 +15,5 @@ return [
     'select_country'            => 'Select country...',
     'default_shipping_location' => 'Default shipping location',
     'default_store'             => 'Default store',
+    'working_time'              => 'Working time',
 ];
