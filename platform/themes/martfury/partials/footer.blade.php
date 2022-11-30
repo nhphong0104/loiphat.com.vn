@@ -5,7 +5,7 @@
         </h3>
         <div class="row">
             @foreach(get_store() as $store)
-                <div class="col-md-4 col-12">
+                <div class="col-md-3 col-12">
                     <aside class="widget widget_footer widget_contact-us">
                         <div class="widget_content">
                             <p class="d-flex">
