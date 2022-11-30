@@ -7,7 +7,7 @@
             @foreach(get_store() as $store)
                 <aside class="widget widget_footer widget_contact-us">
                     <div class="widget_content">
-                        <p>
+                        <p class="d-flex">
                             <span class="number-footer">{{$loop->iteration }}</span>
                             <span class="showroom-table-title">{{$store->name}}</span>
                         </p>
