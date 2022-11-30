@@ -1,50 +1,17 @@
 <footer class="ps-footer">
     <div class="ps-container">
         <div class="ps-footer__widgets">
-            <aside class="widget widget_footer widget_contact-us">
-                <div class="widget_content">
-                    @if (theme_option('hotline'))
-                        <p>{{ __('Call us 24/7') }}</p>
-                        <h3>{{ theme_option('hotline') }}</h3>
-                    @endif
-                    <p>{{ theme_option('address') }} <br><a
-                            href="mailto:{{ theme_option('email') }}">{{ theme_option('email') }}</a></p>
-                    <ul class="ps-list--social">
-                        @for($i = 1; $i <= 10; $i++)
-                            @if(theme_option('social-name-' . $i) && theme_option('social-url-' . $i) && theme_option('social-icon-' . $i))
-                                <li>
-                                    <a href="{{ theme_option('social-url-' . $i) }}"
-                                       title="{{ theme_option('social-name-' . $i) }}"
-                                       style="color: {{ theme_option('social-color-' . $i) }}">
-                                        <i class="fa {{ theme_option('social-icon-' . $i) }}"></i>
-                                    </a>
-                                </li>
-                            @endif
-                        @endfor
-                    </ul>
-                </div>
-            </aside>
+            <h3>
+                Hệ thống các cửa hàng của Lợi Phát
+            </h3>
             @foreach(get_store() as $store)
                 <aside class="widget widget_footer widget_contact-us">
                     <div class="widget_content">
-                        @if (theme_option('hotline'))
-                            <p>{{ __('Call us 24/7') }}</p>
-                            <h3>{{$store->phone}}</h3>
-                        @endif
+                        <p><span class="showroom-table-title">{{$store->name}}</span></p>
+                        <p></p>
+                        <p><i class="far fa-phone fa-flip-horizontal"></i>Tel: {{$store->phone}}</p>
                         <p>{{$store->address}} <br><a href="mailto:{{$store->email}}">{{$store->email}}</a></p>
-                        <ul class="ps-list--social">
-                            @for($i = 1; $i <= 10; $i++)
-                                @if(theme_option('social-name-' . $i) && theme_option('social-url-' . $i) && theme_option('social-icon-' . $i))
-                                    <li>
-                                        <a href="{{ theme_option('social-url-' . $i) }}"
-                                           title="{{ theme_option('social-name-' . $i) }}"
-                                           style="color: {{ theme_option('social-color-' . $i) }}">
-                                            <i class="fa {{ theme_option('social-icon-' . $i) }}"></i>
-                                        </a>
-                                    </li>
-                                @endif
-                            @endfor
-                        </ul>
+                        <p></p>
                     </div>
                 </aside>
             @endforeach
