@@ -1,9 +1,10 @@
 <footer class="ps-footer">
     <div class="ps-container">
+        <h3>
+            Hệ thống các cửa hàng của Lợi Phát
+        </h3>
         <div class="ps-footer__widgets">
-            <h3>
-                Hệ thống các cửa hàng của Lợi Phát
-            </h3>
+
             @foreach(get_store() as $store)
                 <aside class="widget widget_footer widget_contact-us">
                     <div class="widget_content">
