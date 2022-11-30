@@ -3,23 +3,25 @@
         <h3 class="mb-30 text-center">
             Hệ thống các cửa hàng của Lợi Phát
         </h3>
-        <div class="ps-footer__widgets">
+        <div class="row">
             @foreach(get_store() as $store)
-                <aside class="widget widget_footer widget_contact-us">
-                    <div class="widget_content">
-                        <p class="d-flex">
-                            <span class="number-footer">{{$loop->iteration }}</span>
-                            <span class="showroom-table-title">{{$store->name}}</span>
-                        </p>
-                        <p>Địa chỉ: {{$store->address}}</p>
-                        <p>Chỉ đường: {{$store->google_map}}</p>
-                        <p><i class="far fa-phone fa-flip-horizontal"></i>Tel: {{$store->phone}}</p>
-                        <p><i class="far fa-phone fa-flip-horizontal"></i>Email: <a href="mailto:{{$store->email}}">{{$store->email}}</a></p>
-                        <p>Thời gian mở cửa: Từ 8h-20h hàng ngày</p>
-                    </div>
-                </aside>
+                <div class="col-md-4 col-12">
+                    <aside class="widget widget_footer widget_contact-us">
+                        <div class="widget_content">
+                            <p class="d-flex">
+                                <span class="number-footer">{{$loop->iteration }}</span>
+                                <span class="showroom-table-title">{{$store->name}}</span>
+                            </p>
+                            <p>Địa chỉ: {{$store->address}}</p>
+                            <p>Chỉ đường: {{$store->google_map}}</p>
+                            <p><i class="far fa-phone fa-flip-horizontal"></i>Tel: {{$store->phone}}</p>
+                            <p><i class="far fa-phone fa-flip-horizontal"></i>Email: <a href="mailto:{{$store->email}}">{{$store->email}}</a></p>
+                            <p>Thời gian mở cửa: Từ 8h-20h hàng ngày</p>
+                        </div>
+                    </aside>
+                </div>
             @endforeach
-            {{--                {!! dynamic_sidebar('footer_sidebar') !!}--}}
+
         </div>
         @if (Widget::group('bottom_footer_sidebar')->getWidgets())
             <div class="ps-footer__links" id="footer-links">
