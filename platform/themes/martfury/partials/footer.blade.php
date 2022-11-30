@@ -7,7 +7,10 @@
             @foreach(get_store() as $store)
                 <aside class="widget widget_footer widget_contact-us">
                     <div class="widget_content">
-                        <p><span class="showroom-table-title">{{$store->name}}</span></p>
+                        <p>
+                            <span class="number-footer">{{$loop->iteration }}</span>
+                            <span class="showroom-table-title">{{$store->name}}</span>
+                        </p>
                         <p></p>
                         <p><i class="far fa-phone fa-flip-horizontal"></i>Tel: {{$store->phone}}</p>
                         <p><i class="far fa-phone fa-flip-horizontal"></i>Email: <a href="mailto:{{$store->email}}">{{$store->email}}</a></p>
@@ -340,3 +343,5 @@
 </script>
     </body>
 </html>
+.number-footer {display: inline-block;background-color: #ed1b24;font-weight: 700;width: 31px;height: 31px;line-height: 30px;border-radius: 3px 0 0 3px;}
+font-size: 16px;color: #fff;text-align: center;
