@@ -1,18 +1,17 @@
 <footer class="ps-footer">
     <div class="ps-container">
-        <h3>
+        <h3 class="mb-30 text-center">
             Hệ thống các cửa hàng của Lợi Phát
         </h3>
         <div class="ps-footer__widgets">
-
             @foreach(get_store() as $store)
                 <aside class="widget widget_footer widget_contact-us">
                     <div class="widget_content">
                         <p><span class="showroom-table-title">{{$store->name}}</span></p>
                         <p></p>
                         <p><i class="far fa-phone fa-flip-horizontal"></i>Tel: {{$store->phone}}</p>
-                        <p>{{$store->address}} <br><a href="mailto:{{$store->email}}">{{$store->email}}</a></p>
-                        <p></p>
+                        <p><i class="far fa-phone fa-flip-horizontal"></i>Email: <a href="mailto:{{$store->email}}">{{$store->email}}</a></p>
+                        <p>Thời gian mở cửa: Từ 8h-20h hàng ngày</p>
                     </div>
                 </aside>
             @endforeach
