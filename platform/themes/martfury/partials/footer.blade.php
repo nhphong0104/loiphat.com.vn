@@ -29,7 +29,7 @@
             </div>
         @endif
         <hr>
-        <div class="ps-footer__widgets">
+        <div class="ps-footer__widgets pt-35">
             {!! dynamic_sidebar('footer_sidebar') !!}
         </div>
 
