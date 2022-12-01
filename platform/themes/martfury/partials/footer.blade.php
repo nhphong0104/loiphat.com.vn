@@ -29,15 +29,14 @@
             </div>
         @endif
 
-        <div class="ps-footer__widgets">
-            {!! dynamic_sidebar('footer_sidebar') !!}
-        </div>
         <div class="ps-footer__copyright">
+            <div class="ps-footer__widgets">
+                {!! dynamic_sidebar('footer_sidebar') !!}
+            </div>
             <p>{{ theme_option('copyright') }}</p>
             @php $paymentMethods = array_filter(json_decode(theme_option('payment_methods', []), true)); @endphp
             @if ($paymentMethods)
                 <div class="footer-payments">
-                    <span>{{ __('We Using Safe Payment For') }}:</span>
                     <p class="d-sm-inline-block d-block">
                         @foreach($paymentMethods as $method)
                             @if (!empty($method))
