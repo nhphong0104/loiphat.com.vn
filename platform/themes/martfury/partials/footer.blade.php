@@ -22,6 +22,9 @@
                 </div>
             @endforeach
         </div>
+        <div class="ps-footer__widgets">
+            {!! dynamic_sidebar('footer_sidebar') !!}
+        </div>
         @if (Widget::group('bottom_footer_sidebar')->getWidgets())
             <div class="ps-footer__links" id="footer-links">
                 {!! dynamic_sidebar('bottom_footer_sidebar') !!}
@@ -46,7 +49,6 @@
     </div>
 </footer>
 <div class="Rbtn-group left">
-
     <div class="Rbtn-group-content" id="Rbtn-group-content" style="display: none;">
     </div>
     <div class="Rbtn-default">
