@@ -12,16 +12,15 @@
                                 <span class="number-footer">{{$loop->iteration }}</span>
                                 <span class="showroom-table-title">{{$store->name}}</span>
                             </p>
-                            <p><i class="icon-location pr-5"></i>Địa chỉ: {{$store->address}}</p>
-                            <p><i class="icon-map pr-5"></i>Chỉ đường: {{$store->google_map}}</p>
-                            <p><i class="icon-phone pr-5"></i>Tel: {{$store->phone}}</p>
-                            <p><i class="icon-voicemail pr-5"></i>Email: <a href="mailto:{{$store->email}}">{{$store->email}}</a></p>
-                            <p><i class="icon-timer pr-5"></i>Thời gian mở cửa: Từ 8h-20h hàng ngày</p>
+                            <p><i class="icon-location pr-1"></i>Địa chỉ: {{$store->address}}</p>
+                            <p><i class="icon-map pr-1"></i>Chỉ đường: {{$store->google_map}}</p>
+                            <p><i class="icon-phone pr-1"></i>Tel: {{$store->phone}}</p>
+                            <p><i class="icon-voicemail pr-1"></i>Email: <a href="mailto:{{$store->email}}">{{$store->email}}</a></p>
+                            <p><i class="icon-timer pr-1"></i>Thời gian mở cửa: Từ 8h-20h hàng ngày</p>
                         </div>
                     </aside>
                 </div>
             @endforeach
-
         </div>
         @if (Widget::group('bottom_footer_sidebar')->getWidgets())
             <div class="ps-footer__links" id="footer-links">
