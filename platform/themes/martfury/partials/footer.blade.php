@@ -12,8 +12,8 @@
                                 <span class="number-footer">{{$loop->iteration }}</span>
                                 <span class="showroom-table-title">{{$store->name}}</span>
                             </p>
-                            <p>Địa chỉ: {{$store->address}}</p>
-                            <p>Chỉ đường: {{$store->google_map}}</p>
+                            <p><i class="location-outline"></i>Địa chỉ: {{$store->address}}</p>
+                            <p><i class="icon-rocket"></i>Chỉ đường: {{$store->google_map}}</p>
                             <p><i class="far fa-phone fa-flip-horizontal"></i>Tel: {{$store->phone}}</p>
                             <p><i class="far fa-phone fa-flip-horizontal"></i>Email: <a href="mailto:{{$store->email}}">{{$store->email}}</a></p>
                             <p>Thời gian mở cửa: Từ 8h-20h hàng ngày</p>
@@ -101,7 +101,7 @@
     </div>
 </div>
 
-<div id="contact1"n>
+<div id="contact1">
     <div class="item-contact">
         <div class="item-contact-wrap">
             <div class="elementor-icon-box-wrapper">
@@ -346,5 +346,3 @@
 </script>
     </body>
 </html>
-.number-footer {display: inline-block;background-color: #ed1b24;font-weight: 700;width: 31px;height: 31px;line-height: 30px;border-radius: 3px 0 0 3px;}
-font-size: 16px;color: #fff;text-align: center;
