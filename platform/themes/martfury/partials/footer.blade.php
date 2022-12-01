@@ -28,11 +28,13 @@
                 {!! dynamic_sidebar('bottom_footer_sidebar') !!}
             </div>
         @endif
+        <hr>
+        <div class="ps-footer__widgets">
+            {!! dynamic_sidebar('footer_sidebar') !!}
+        </div>
 
         <div class="ps-footer__copyright">
-            <div class="ps-footer__widgets">
-                {!! dynamic_sidebar('footer_sidebar') !!}
-            </div>
+
             <p>{{ theme_option('copyright') }}</p>
             @php $paymentMethods = array_filter(json_decode(theme_option('payment_methods', []), true)); @endphp
             @if ($paymentMethods)
