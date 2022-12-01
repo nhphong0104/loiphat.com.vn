@@ -22,14 +22,16 @@
                 </div>
             @endforeach
         </div>
-        <div class="ps-footer__widgets">
-            {!! dynamic_sidebar('footer_sidebar') !!}
-        </div>
+
         @if (Widget::group('bottom_footer_sidebar')->getWidgets())
             <div class="ps-footer__links" id="footer-links">
                 {!! dynamic_sidebar('bottom_footer_sidebar') !!}
             </div>
         @endif
+
+        <div class="ps-footer__widgets">
+            {!! dynamic_sidebar('footer_sidebar') !!}
+        </div>
         <div class="ps-footer__copyright">
             <p>{{ theme_option('copyright') }}</p>
             @php $paymentMethods = array_filter(json_decode(theme_option('payment_methods', []), true)); @endphp
