@@ -23,9 +23,7 @@
                 --header-diliver-border-color: {{ hex_to_rgba(theme_option('header_text_color', '#000'), 0.15) }};
             }
         </style>
-
-
-
+        <meta name='dmca-site-verification' content='aElFWDdYa0dxNThUb3FEL1NJRk0xdz090' />
         {!! Theme::header() !!}
     </head>
     <body @if (Theme::get('pageId')) id="{{ Theme::get('pageId') }}" @endif @if (BaseHelper::siteLanguageDirection() == 'rtl') dir="rtl" @endif>
