@@ -24,6 +24,8 @@
             }
         </style>
 
+
+
         {!! Theme::header() !!}
     </head>
     <body @if (Theme::get('pageId')) id="{{ Theme::get('pageId') }}" @endif @if (BaseHelper::siteLanguageDirection() == 'rtl') dir="rtl" @endif>
