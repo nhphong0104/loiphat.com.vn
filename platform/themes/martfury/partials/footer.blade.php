@@ -349,6 +349,6 @@
     }
 </script>
 
-<a href="//www.dmca.com/Protection/Status.aspx?ID=6c68c260-5c38-4890-90b2-d6e38ad47638" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=6c68c260-5c38-4890-90b2-d6e38ad47638"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
+<a href="//www.dmca.com/Protection/Status.aspx?ID=a74cdf7f-aded-41b7-a8df-dd1f043f0fc9" title="DMCA.com Protection Status" class="dmca-badge"> <img src ="https://images.dmca.com/Badges/dmca_protected_sml_120m.png?ID=a74cdf7f-aded-41b7-a8df-dd1f043f0fc9"  alt="DMCA.com Protection Status" /></a>  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script>
     </body>
 </html>
