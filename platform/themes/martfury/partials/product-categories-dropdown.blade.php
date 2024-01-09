@@ -7,7 +7,7 @@
             @elseif ($category->getMetaData('icon', true))
                 <i class="{{ $category->getMetaData('icon', true) }}"></i>
             @endif
-            @if (count($category->icon->meta_value) > 0) <i class="{{ $category->icon->meta_value[0] }}"></i> @endif
+{{--            @if (count($category->icon->meta_value) > 0) <i class="{{ $category->icon->meta_value[0] }}"></i> @endif--}}
                 {{ $category->name }}
         </a>
         @if ($category->children->count())
