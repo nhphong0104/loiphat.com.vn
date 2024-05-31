@@ -1,4 +1,3 @@
-@extends(BaseHelper::getAdminMasterLayoutTemplate())
 @section('content')
     <div class="tabbable-custom tabbable-tabdrop">
         <ul class="nav nav-tabs">
