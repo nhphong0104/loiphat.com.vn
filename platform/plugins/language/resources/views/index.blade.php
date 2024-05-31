@@ -1,3 +1,4 @@
+@extends('core/base::layouts.master')
 @section('content')
     <div class="tabbable-custom tabbable-tabdrop">
         <ul class="nav nav-tabs">
