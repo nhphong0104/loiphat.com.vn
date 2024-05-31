@@ -69,7 +69,6 @@ class LanguageServiceProvider extends ServiceProvider
     {
         $this
             ->setNamespace('plugins/language')
-            ->loadHelpers()
             ->loadAndPublishConfigurations(['permissions'])
             ->loadRoutes(['web'])
             ->loadAndPublishViews()
