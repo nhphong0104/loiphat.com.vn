@@ -19,7 +19,6 @@ class LanguageAdvancedServiceProvider extends ServiceProvider
     {
         if (is_plugin_active('language')) {
             $this->setNamespace('plugins/language-advanced')
-                ->loadHelpers()
                 ->loadMigrations()
                 ->loadAndPublishConfigurations(['general'])
                 ->loadAndPublishViews()
