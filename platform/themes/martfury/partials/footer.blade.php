@@ -120,7 +120,7 @@
                 </div>
                 <div class="elementor-icon-box-content">
                     <div class="elementor-icon-box-title">
-                        <a href="https://zalo.me/0986313886" target="_blank">
+                        <a href="https://zalo.me/0984220226" target="_blank">
                             Chat Zalo
                         </a>
                     </div>
