@@ -88,7 +88,7 @@
                 </svg>
             </a>
             <div class="text-call" style="background-color:#f5791f!important;">
-                <a rel="nofollow" href="tel: 0986313886">Hotline Miền Trung</a>
+                <a rel="nofollow" href="tel: 0984220226">Hotline Miền Trung</a>
             </div>
         </div>
         <div class="Rbtn-call">
